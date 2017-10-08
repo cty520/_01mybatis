@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--根节点
+ namespace:
+-->
+<mapper namespace="cn.happy.dao.IDeptDAO">
+
+    <resultMap id="myDeptMapper" type="Dept">
+        <id property="deptno" column="deptno"></id>
+        <result property="deptname2" column="deptname"></result>
+    </resultMap>
+
+    <!--1.查询所有resultMap-->
+    <select id="findAll"  resultType="Dept">
+        select * from dept
+    </select>
+
+    <!--1.查询所有-->
+    <select id="findAll2"  resultType="Dept">
+        select * from dept
+    </select>
+
+    <!--2.添加部门-->
+    <insert id="addDept" >
+        insert into dept(deptname) values(#{deptname})
+    </insert>
+
+    <!--2.修改部门-->
+    <update id="editDept" >
+        update   dept set deptName=#{deptname} where deptno=#{deptno}
+    </update>
+
+    <!--2.删除部门-->
+    <delete id="delDept" >
+        delete from dept where deptno=#{deptno}
+    </delete>
+
+</mapper>

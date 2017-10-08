@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Cofing 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happy.Dao.IEmpDAO">
+    <resultMap id="EmpMapper" type="Emp">
+        <id property="empno" column="empno"></id>
+        <result property="empname" column="empname"></result>
+    </resultMap>
+     <select id="findAll" resultMap="myEmpMapper">
+         select *  FROM  emp
+         </select>
+</mapper>

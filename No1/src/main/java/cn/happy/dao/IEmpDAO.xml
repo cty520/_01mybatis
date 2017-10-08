@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--根节点
+ namespace:
+-->
+<mapper namespace="cn.happy.dao.IEmpDAO">
+
+    <resultMap id="myEmpMapper" type="Emp" autoMapping="false">
+        <id property="empno" column="empno"></id>
+        <result property="empname" column="empname"></result>
+    </resultMap>
+
+    <!--1.查询所有resultMap-->
+    <select id="findAll"  resultMap="myEmpMapper">
+        select * from emp
+    </select>
+
+</mapper>

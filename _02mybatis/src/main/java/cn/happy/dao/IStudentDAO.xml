@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.happy.dao.IStudentInfo">
+    <select id="findUselike" resultType="StudentInfo">
+        select*from studentinfo where stuname like '%${stuname}%'
+    </select>
+    <select id="findStudentInfoByManyCondition" resultType="StudentInfo">
+         SELECT  * from studentinfo where stuname= LIKE '%' #{stuname2} '%'AND  stuage>#{stuage}
+</select>
+    <select id="findStudentInfoByManyCondition" resultType="StudentInfo">
+        SELECT  *FROM  studentinfo WHERE  stuname LIKE '%' #{0}'%' and stuage>3{stuage}
+
+    </select>
+    <select id="findStudentInfoByManyCondition" resultType="StudentInfo">
+        SELECT  *FROM  studentinfo WHERE  stuname LIKE '%' #{0}'%' and stuage>3#{1}
+
+    </select>
+
+    <!--智能标签 if-->
+    <select id="findBylf" resultType="StudentInfo">
+        SELECT *FROM  studentinfo
+        <where>
+            <if test="studentname!=null">
+                AND  stuname LIKE  '%'#{stuname}'%'
+
+            </if>
+            <if test="stuage!=null">
+                AND  stuage>#{stuage}
+
+            </if>
+        </where>
+    </select>
+    <!--智能标签 where-->
+    <select id="findChoose" resultType="StudentInfo">
+
+      select * from studentinfo
+    <where>
+        <choose>
+        <when test="stuname!=null">
+         AND  stuname like'%'#{stuname}'%'
+        </when>
+            <when test="stuage!=null">
+                AND  stuage >#{stuage}
+            </when>
+            <otherwise>
+                AND  i=1
+            </otherwise>
+        </choose>
+        <if test="stuage!=null">
+
+        </if>
+    </where>
+    </select>
+
+
+</mapper>
